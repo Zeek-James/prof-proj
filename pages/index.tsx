@@ -21,7 +21,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Container theme="light">Hello</Container>
+        <Container theme="light">
+          <h1>My First Test</h1>
+          Hello
+        </Container>
       </main>
     </>
   );
