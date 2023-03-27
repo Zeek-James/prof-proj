@@ -18,6 +18,7 @@ const Container = styled.div<ContainerProps>`
 const inter = Inter({ subsets: ["latin"] });
 
 const Home: NextPage = () => {
+  const a = "me";
   return (
     <Container>
       <Head>
