@@ -1,7 +1,7 @@
 describe("template spec", () => {
   it("passes", () => {
     cy.visit("http://localhost:3000");
-    cy.get("h1").contains("My First Test");
+    cy.get("p").contains("Get started by editing");
   });
 });
 
