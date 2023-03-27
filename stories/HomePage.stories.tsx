@@ -19,6 +19,6 @@ const Template: ComponentStory<typeof HomePage> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   user: {
-    name: "Jane Doe",
+    name: "John Doe",
   },
 };
