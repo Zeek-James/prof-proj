@@ -6,6 +6,7 @@ type MenuLinkProps = {
   iconSrc: string;
   text: string;
   href: string;
+  isActive: boolean;
 };
 
 type MenuButtonProps = {
@@ -14,8 +15,21 @@ type MenuButtonProps = {
   onClick: () => void;
 };
 
-const ListItem = styled.li`
+const ListItemfn = styled.li`
   padding: 8px 12px;
+`;
+
+const ListItem = styled(ListItemfn)<{ isActive: boolean }>`
+  height: 51px;
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+  background: ${({ isActive }) => (isActive ? "#344054" : "transparent")};
+  border-radius: 6px;
+
+  &: first-child {
+    margin-top: 0;
+  }
 `;
 
 const CustomDiv = styled.div`
@@ -49,12 +63,15 @@ const Icon = styled.img`
   border-radius: 100%;
 `;
 
-export default function MenuItem(menuItem: MenuLinkProps) {
-  const { text, iconSrc } = menuItem;
-
+export default function MenuItem({
+  text,
+  iconSrc,
+  href,
+  isActive,
+}: MenuLinkProps) {
   return (
-    <ListItem>
-      <Link href={menuItem.href} passHref style={{ textDecoration: "none" }}>
+    <ListItem isActive={isActive}>
+      <Link href={href} passHref style={{ textDecoration: "none" }}>
         <CustomDiv>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <Icon src={iconSrc} alt={`${text} icon`} />
@@ -69,12 +86,12 @@ export function MenuItemfn({ text, iconSrc, onClick }: MenuButtonProps) {
   // const { text, iconSrc } = menuItem;
 
   return (
-    <ListItem>
+    <ListItemfn>
       <Button onClick={onClick}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <Icon src={iconSrc} alt={`${text} icon`} />
         {text}
       </Button>
-    </ListItem>
+    </ListItemfn>
   );
 }

@@ -1,12 +1,14 @@
+import { Routes } from "../../config/routes";
 import styled from "styled-components";
 import MenuItem, { MenuItemfn } from "./MenuItem";
+import { useRouter } from "next/router";
 
 const menuItems = [
-  { text: "Projects", iconSrc: "/thirteen.svg", href: "#" },
-  { text: "Issues", iconSrc: "/thirteen.svg", href: "#" },
-  { text: "Alerts", iconSrc: "/thirteen.svg", href: "#" },
-  { text: "Users", iconSrc: "/thirteen.svg", href: "#" },
-  { text: "Settings", iconSrc: "/thirteen.svg", href: "#" },
+  { text: "Projects", iconSrc: "/thirteen.svg", href: Routes.projects },
+  { text: "Issues", iconSrc: "/thirteen.svg", href: Routes.issues },
+  { text: "Alerts", iconSrc: "/thirteen.svg", href: Routes.alerts },
+  { text: "Users", iconSrc: "/thirteen.svg", href: Routes.users },
+  { text: "Settings", iconSrc: "/thirteen.svg", href: Routes.settings },
 ];
 
 const Nav = styled.nav`
@@ -35,12 +37,18 @@ const LinkList = styled(List)`
 `;
 
 export function SidebarNavigation() {
+  const { pathname } = useRouter();
+
   return (
     <Nav>
       <Logo>Brim</Logo>
       <LinkList>
         {menuItems.map((menuItem, idx) => (
-          <MenuItem {...menuItem} key={idx} />
+          <MenuItem
+            {...menuItem}
+            key={idx}
+            isActive={pathname === menuItem.href}
+          />
         ))}
       </LinkList>
       <List>
