@@ -53,6 +53,7 @@ const Home: NextPage = () => {
       <Main>
         <SidebarNavigation />
         <Title>Get started by editing</Title>
+        <p>Get started by editing</p>
       </Main>
     </Container>
   );
