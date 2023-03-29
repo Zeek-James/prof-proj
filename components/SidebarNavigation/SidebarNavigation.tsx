@@ -2,6 +2,7 @@ import { Routes } from "../../config/routes";
 import styled from "styled-components";
 import MenuItem, { MenuItemfn } from "./MenuItem";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const menuItems = [
   { text: "Projects", iconSrc: "/thirteen.svg", href: Routes.projects },
@@ -11,8 +12,8 @@ const menuItems = [
   { text: "Settings", iconSrc: "/thirteen.svg", href: Routes.settings },
 ];
 
-const Nav = styled.nav`
-  width: 280px;
+const Nav = styled.nav<{ isCollapsed: boolean }>`
+  width: ${({ isCollapsed }) => (isCollapsed ? "50px" : "248px")};
   height: calc(100vh - 2 * 32px);
   background: #101828;
   padding: 32px 16px;
@@ -20,10 +21,10 @@ const Nav = styled.nav`
   flex-direction: column;
 `;
 
-const Logo = styled.div`
-  padding: 0 12px 24px;
+const Logo = styled.div<{ isCollapsed: boolean }>`
+  font-size: ${({ isCollapsed }) => (isCollapsed ? "35px" : "30px")};
   color: white;
-  font-size: 30px;
+  margin: 0 12px 24px;
 `;
 
 const List = styled.ul`
@@ -38,16 +39,18 @@ const LinkList = styled(List)`
 
 export function SidebarNavigation() {
   const { pathname } = useRouter();
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <Nav>
-      <Logo>Brim</Logo>
+    <Nav isCollapsed={isCollapsed}>
+      <Logo isCollapsed={isCollapsed}>B{!isCollapsed ? "rim" : "."}</Logo>
       <LinkList>
         {menuItems.map((menuItem, idx) => (
           <MenuItem
             {...menuItem}
             key={idx}
             isActive={pathname === menuItem.href}
+            isCollapsed={isCollapsed}
           />
         ))}
       </LinkList>
@@ -56,11 +59,13 @@ export function SidebarNavigation() {
           text={"Support"}
           onClick={() => alert("Junior")}
           iconSrc={"/thirteen.svg"}
+          isCollapsed={isCollapsed}
         />
         <MenuItemfn
           text={"Collapse"}
-          onClick={() => alert("Easy")}
+          onClick={() => setIsCollapsed((prev) => !prev)}
           iconSrc={"/thirteen.svg"}
+          isCollapsed={isCollapsed}
         />
       </List>
     </Nav>

@@ -2,18 +2,20 @@ import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 
-type MenuLinkProps = {
+type MenuItemProps = {
   iconSrc: string;
   text: string;
-  href: string;
-  isActive: boolean;
+  isCollapsed: boolean;
 };
 
-type MenuButtonProps = {
-  iconSrc: string;
-  text: string;
+interface MenuLinkProps extends MenuItemProps {
+  href: string;
+  isActive: boolean;
+}
+
+interface MenuButtonProps extends MenuItemProps {
   onClick: () => void;
-};
+}
 
 const ListItemfn = styled.li`
   padding: 8px 12px;
@@ -68,6 +70,7 @@ export default function MenuItem({
   iconSrc,
   href,
   isActive,
+  isCollapsed,
 }: MenuLinkProps) {
   return (
     <ListItem isActive={isActive}>
@@ -75,22 +78,25 @@ export default function MenuItem({
         <CustomDiv>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <Icon src={iconSrc} alt={`${text} icon`} />
-          {text}
+          {!isCollapsed && text}
         </CustomDiv>
       </Link>
     </ListItem>
   );
 }
 
-export function MenuItemfn({ text, iconSrc, onClick }: MenuButtonProps) {
-  // const { text, iconSrc } = menuItem;
-
+export function MenuItemfn({
+  text,
+  iconSrc,
+  onClick,
+  isCollapsed,
+}: MenuButtonProps) {
   return (
     <ListItemfn>
       <Button onClick={onClick}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <Icon src={iconSrc} alt={`${text} icon`} />
-        {text}
+        {!isCollapsed && text}
       </Button>
     </ListItemfn>
   );
