@@ -29,6 +29,7 @@
     "react-dom": "18.2.0",
     "sb": "^6.5.16",
     "styled-components": "^5.3.9",
+    "styled-normalize": "^8.0.7",
     "typescript": "5.0.2"
   },
   "devDependencies": {
