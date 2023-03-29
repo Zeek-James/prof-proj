@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MenuItem from "./MenuItem";
+import MenuItem, { MenuItemfn } from "./MenuItem";
 
 const menuItems = [
   { text: "Projects", iconSrc: "/thirteen.svg", href: "#" },
@@ -28,8 +28,16 @@ export function SidebarNavigation() {
         ))}
       </List>
       <List>
-        <li>Support</li>
-        <li>Collapse</li>
+        <MenuItemfn
+          text={"Support"}
+          onClick={() => alert("Junior")}
+          iconSrc={"/thirteen.svg"}
+        />
+        <MenuItemfn
+          text={"Collapse"}
+          onClick={() => alert("Easy")}
+          iconSrc={"/thirteen.svg"}
+        />
       </List>
     </Nav>
   );
