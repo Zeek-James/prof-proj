@@ -23,23 +23,23 @@ const Main = styled.main`
   align-items: center;
 `;
 
-const Title = styled.h1`
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-  text-align: center;
+// const Title = styled.h1`
+//   margin: 0;
+//   line-height: 1.15;
+//   font-size: 4rem;
+//   text-align: center;
 
-  a {
-    color: #0070f3;
-    text-decoration: none;
-  }
+//   a {
+//     color: #0070f3;
+//     text-decoration: none;
+//   }
 
-  a:hover,
-  a:focus,
-  a:active {
-    text-decoration: underline;
-  }
-`;
+//   a:hover,
+//   a:focus,
+//   a:active {
+//     text-decoration: underline;
+//   }
+// `;
 
 const Home: NextPage = () => {
   return (
@@ -52,7 +52,8 @@ const Home: NextPage = () => {
       </Head>
       <Main>
         <SidebarNavigation />
-        <Title>Get started by editing</Title>
+        {/* <Title>Get started by editing</Title> */}
+        <p>Get started by editing</p>
       </Main>
     </Container>
   );
