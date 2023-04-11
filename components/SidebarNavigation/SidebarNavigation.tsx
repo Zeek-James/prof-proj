@@ -2,7 +2,8 @@ import { Routes } from "../../config/routes";
 import styled from "styled-components";
 import MenuItem, { MenuItemfn } from "./MenuItem";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import React from "react";
+import { NavigationContext } from "../../context/Navigation";
 
 const menuItems = [
   { text: "Projects", iconSrc: "/thirteen.svg", href: Routes.projects },
@@ -39,18 +40,21 @@ const LinkList = styled(List)`
 
 export function SidebarNavigation() {
   const { pathname } = useRouter();
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const { sidebarCollapsed, setSidebarCollapsed } =
+    React.useContext(NavigationContext);
 
   return (
-    <Nav isCollapsed={isCollapsed}>
-      <Logo isCollapsed={isCollapsed}>B{!isCollapsed ? "rim" : "."}</Logo>
+    <Nav isCollapsed={sidebarCollapsed}>
+      <Logo isCollapsed={sidebarCollapsed}>
+        B{!sidebarCollapsed ? "rim" : "."}
+      </Logo>
       <LinkList>
         {menuItems.map((menuItem, idx) => (
           <MenuItem
             {...menuItem}
             key={idx}
             isActive={pathname === menuItem.href}
-            isCollapsed={isCollapsed}
+            isCollapsed={sidebarCollapsed}
           />
         ))}
       </LinkList>
@@ -59,13 +63,13 @@ export function SidebarNavigation() {
           text={"Support"}
           onClick={() => alert("Junior")}
           iconSrc={"/thirteen.svg"}
-          isCollapsed={isCollapsed}
+          isCollapsed={sidebarCollapsed}
         />
         <MenuItemfn
           text={"Collapse"}
-          onClick={() => setIsCollapsed((prev) => !prev)}
+          onClick={() => setSidebarCollapsed((prev) => !prev)}
           iconSrc={"/thirteen.svg"}
-          isCollapsed={isCollapsed}
+          isCollapsed={sidebarCollapsed}
         />
       </List>
     </Nav>
