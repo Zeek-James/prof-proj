@@ -18,15 +18,16 @@ interface MenuButtonProps extends MenuItemProps {
 }
 
 const ListItemfn = styled.li`
-  padding: 8px 12px;
+  padding: ${({ theme }) => `${theme.spacing[2]} ${theme.spacing[3]}`};
 `;
 
 const ListItem = styled(ListItemfn)<{ isActive: boolean }>`
   height: 51px;
   display: flex;
   align-items: center;
-  margin-top: 4px;
-  background: ${({ isActive }) => (isActive ? "#344054" : "transparent")};
+  margin-top: ${({ theme }) => theme.spacing[1]};
+  background: ${({ isActive, theme }) =>
+    isActive ? theme.colors.gray[700] : "transparent"};
   border-radius: 6px;
 
   &: first-child {
@@ -37,13 +38,13 @@ const ListItem = styled(ListItemfn)<{ isActive: boolean }>`
 const CustomDiv = styled.div`
   display: flex;
   align-items: center;
-  color: #f2f4f7;
+  color: ${({ theme }) => theme.colors.gray[100]};
 `;
 
 const Button = styled.button`
   display: flex;
   align-items: center;
-  color: #f2f4f7;
+  color: ${({ theme }) => theme.colors.gray[100]};
   cursor: pointer;
 
   // remove default button styles
@@ -58,10 +59,10 @@ const Button = styled.button`
 `;
 
 const Icon = styled.img`
-  margin-right: 12px;
+  margin-right: ${({ theme }) => theme.spacing[3]};
   height: 20px;
   width: 20px;
-  background: #f2f4f7;
+  background: ${({ theme }) => theme.colors.gray[100]};
   border-radius: 100%;
 `;
 

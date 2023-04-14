@@ -15,9 +15,9 @@ const menuItems = [
 
 const Nav = styled.nav<{ isCollapsed: boolean }>`
   width: ${({ isCollapsed }) => (isCollapsed ? "50px" : "248px")};
-  height: calc(100vh - 2 * 32px);
-  background: #101828;
-  padding: 32px 16px;
+  height: calc(100vh - 2 * ${({ theme }) => theme.spacing[8]});
+  background: ${({ theme }) => theme.colors.gray[900]};
+  padding: ${({ theme }) => `${theme.spacing[8]} ${theme.spacing[4]}`};
   display: flex;
   flex-direction: column;
 `;
@@ -25,7 +25,7 @@ const Nav = styled.nav<{ isCollapsed: boolean }>`
 const Logo = styled.div<{ isCollapsed: boolean }>`
   font-size: ${({ isCollapsed }) => (isCollapsed ? "35px" : "30px")};
   color: white;
-  margin: 0 12px 24px;
+  margin: 0 ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[6]}`};
 `;
 
 const List = styled.ul`

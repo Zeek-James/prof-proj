@@ -2,14 +2,17 @@
 import { GlobalStyles } from "../styles/GlobalStyles";
 import { NavigationProvider } from "../context/Navigation";
 import { decorator } from "../__mocks__/next/router";
+import CustomThemeProvider from "../shared/CustomThemeProvider";
 
 export const decorators = [
   (Story) => (
     // (Story: StoryType) => (
-    <NavigationProvider>
-      <GlobalStyles />
-      <Story />
-    </NavigationProvider>
+    <CustomThemeProvider>
+      <NavigationProvider>
+        <GlobalStyles />
+        <Story />
+      </NavigationProvider>
+    </CustomThemeProvider>
   ),
   decorator,
 ];
