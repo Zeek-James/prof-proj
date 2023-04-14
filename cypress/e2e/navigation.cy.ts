@@ -1,0 +1,20 @@
+describe("Sidebar Navigation", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3001");
+  });
+
+  it("Links", () => {
+    cy.findByRole("navigation").findByText("Issues").click();
+    cy.url().should("eq", "http://localhost:3001/issues");
+
+    cy.findByRole("navigation").findByText("Projects").click();
+    cy.url().should("eq", "http://localhost:3001/");
+  });
+  it("is collapsible", () => {
+    cy.findByText("Collapse").click();
+    cy.findByRole("navigation").findAllByRole("link").should("have.length", 5);
+    cy.findByRole("navigation").findByText("Issues").should("not.exist");
+  });
+});
+
+export {};
