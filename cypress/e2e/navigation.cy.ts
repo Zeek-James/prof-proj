@@ -5,10 +5,10 @@ describe("Sidebar Navigation", () => {
 
   it("Links", () => {
     cy.findByRole("navigation").findByText("Issues").click();
-    cy.url().should("eq", "http://localhost:3001/issues");
+    cy.url().should("eq", "http://localhost:3000/issues");
 
     cy.findByRole("navigation").findByText("Projects").click();
-    cy.url().should("eq", "http://localhost:3001/");
+    cy.url().should("eq", "http://localhost:3000/");
   });
   it("is collapsible", () => {
     cy.findByText("Collapse").click();
