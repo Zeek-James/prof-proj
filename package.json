@@ -29,6 +29,7 @@
     "react-dom": "18.2.0",
     "sb": "^6.5.16",
     "styled-components": "^5.3.9",
+    "styled-normalize": "^8.0.7",
     "typescript": "5.0.2"
   },
   "devDependencies": {
@@ -41,6 +42,7 @@
     "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/react": "^6.5.16",
     "@storybook/testing-library": "^0.0.13",
+    "@testing-library/cypress": "^9.0.0",
     "babel-loader": "^8.3.0",
     "cypress": "^12.8.1",
     "eslint-config-prettier": "^8.8.0",
